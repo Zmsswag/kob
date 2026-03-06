@@ -63,7 +63,7 @@ export default {
 
         const refresh_bots = () => {
             $.ajax({
-                url: "https://app2703.acapp.acwing.com.cn/api/user/bot/getlist/",
+                url: "https://app7885.acapp.acwing.com.cn/api/user/bot/getlist/",
                 type: "get",
                 headers: {
                     Authorization: "Bearer " + store.state.user.token,

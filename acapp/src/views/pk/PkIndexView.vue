@@ -25,7 +25,7 @@ export default {
     },
     setup() {
         const store = useStore();
-        const socketUrl = `wss://app2703.acapp.acwing.com.cn/websocket/${store.state.user.token}/`;
+        const socketUrl = `wss://app7885.acapp.acwing.com.cn/websocket/${store.state.user.token}/`;
 
         store.commit("updateLoser", "none");
         store.commit("updateIsRecord", false);
@@ -39,7 +39,6 @@ export default {
             socket = new WebSocket(socketUrl);
 
             socket.onopen = () => {
-                console.log("connected!");
                 store.commit("updateSocket", socket);
             }
 
@@ -55,13 +54,11 @@ export default {
                     }, 200);
                     store.commit("updateGame", data.game);
                 } else if (data.event === "move") {
-                    console.log(data);
                     const game = store.state.pk.gameObject;
                     const [snake0, snake1] = game.snakes;
                     snake0.set_direction(data.a_direction);
                     snake1.set_direction(data.b_direction);
                 } else if (data.event === "result") {
-                    console.log(data);
                     const game = store.state.pk.gameObject;
                     const [snake0, snake1] = game.snakes;
 
@@ -76,7 +73,6 @@ export default {
             }
 
             socket.onclose = () => {
-                console.log("disconnected!");
             }
         });
 
@@ -94,5 +90,11 @@ div.user-color {
     color: white;
     font-size: 30px;
     font-weight: 600;
+}
+div.user-color {
+    position:absolute;
+    bottom: 5vh;
+    width: 100%;
+    text-align: center;
 }
 </style>
